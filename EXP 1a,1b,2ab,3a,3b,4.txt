@@ -98,6 +98,7 @@ EXP3b:
 
 ADDITION:
 
+ORG 00H
 CLR C 
 MOV A, #45H  
 ADD A, #0ECH 
