@@ -1,0 +1,162 @@
+EXP1a:
+
+org 000h
+mov a,#30h
+mov b,#50h
+add a,b
+mov r0,a
+end
+
+EXP1b:
+
+i. Sample of Assembly language program:
+
+ORG 0H
+MOV R5, #25H
+MOV R7,#34H
+MOV A, #0
+ADD A, R5
+ADD A, R7
+ADD A, #12H
+HERE:SJMP HERE
+END
+
+ii. Multiply 25 by 10 using the technique of repeated addition:
+
+MOV A, #0
+MOV R2, #10
+AGAIN:ADD A, #25
+DJNZ R2, AGAIN
+MOV R5,A
+
+iii. Program to add first 10 natural number:
+
+MOV A,#0
+MOV R2, #10
+MOV R0, #0
+AGAIN:INC R0
+ADD A,R0
+DJNZ R2, AGAIN
+MOV 46H, A
+
+iv. Program to load the accumulator with the value of 55H and complement the ACC
+700 times:
+
+MOV A,#55H
+MOV R3,#10
+NEXT:MOV R2,#70
+AGAIN:CPL A
+DJNZ R2,AGAIN
+DJNZ R3,NEXT
+
+v. Multiply ECH by 25H using the technique of repeated addition:
+
+MOV R1,#0
+MOV A,#0
+MOV R0,#25H
+AGAIN: ADD A,#0ECH
+JNC HERE
+INC R1
+HERE: DJNZ R0,AGAIN
+MOV R0,A
+
+EXP2a,2b:
+
+ORG 00H
+MOV R0,#40H
+MOV A,#25H
+MOV @R0,A
+END
+
+EXP3a:
+
+ORG 00H
+SJMP START
+ORG 30H
+START:
+MOV A,#01H
+MOV B,#02H
+ADD A,B
+MOV R0,A
+MOV A,#01H
+CLR C
+SUBB A,B
+MOV R1,A
+MOV A,#01H
+ANL A,B
+MOV R2,A
+MOV A,#01H
+ORL A,B
+MOV R3,A
+MOV A,#01H
+XRL A,B
+MOV R4,A
+HERE: SJMP HERE
+END
+
+EXP3b:
+
+ADDITION:
+
+CLR C 
+MOV A, #45H  
+ADD A, #0ECH 
+ MOV R0, A 
+ MOV A, #02H  
+ ADDC A, #0FCH 
+ MOV R1, A 
+
+SUBTRACTION:
+
+Subtraction with CY=0:
+
+ORG 00H
+MOV A, #50H  
+CLR C 
+SUBB A, #20H 
+MOV R0, A 
+END
+
+ Subtraction with CY=1:
+
+ORG 00H
+MOV A, #50H 
+SETB C ;
+SUBB A, #20H  
+MOV R0, A 
+END
+
+MULTIPLICATION:
+
+ORG 00H
+MOV A, #05H  
+MOV B, #04H 
+MUL AB 
+MOV R0, A 
+MOV R1, B 
+END
+
+DIVISION:
+
+ ORG 00H
+MOV A, #14H 
+MOV B, #05H 
+DIV AB 
+MOV R0, A 
+MOV R1, B 
+END
+
+EXP4:
+
+#include<reg51.h>
+void main() {
+ unsigned char a=0x0A;
+ unsigned char b= 0x05;
+ unsigned char result_addition, result_subtraction, result_multiplication, result_division;
+ result_addition = a + b;
+ result_subtraction = a –b;
+ result_multiplication = a * b;
+ result_division = a / b;
+}
+
+
